@@ -21,5 +21,5 @@ def test_render_docs_markdown_contains_endpoint_sections() -> None:
     assert "## Endpoint: fetch" in rendered
     assert "## Endpoint: taxon" in rendered
     assert "- observed_on: 2026-03-24" in rendered
-    assert "bacdive-cli taxon Bacillus subtilis returned count=286" in rendered
+    assert "bacdive taxon Bacillus subtilis returned count=286" in rendered
     assert "Observed on 2026-03-24" not in rendered

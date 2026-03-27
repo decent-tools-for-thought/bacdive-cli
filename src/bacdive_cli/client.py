@@ -194,9 +194,7 @@ class BacdiveClient:
         use_cache: bool,
         refresh: bool,
     ) -> Any:
-        cache_key = self.cache.make_key(
-            {"base_url": self.base_url, "path": path, "params": params}
-        )
+        cache_key = self.cache.make_key({"base_url": self.base_url, "path": path, "params": params})
         if use_cache and not refresh:
             cached = self.cache.get(cache_key)
             if cached is not None:

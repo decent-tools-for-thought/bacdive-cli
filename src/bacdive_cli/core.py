@@ -18,7 +18,7 @@ from .docs import endpoint_names, render_docs
 
 def build_parser(cache_settings: CacheSettings | None = None) -> argparse.ArgumentParser:
     settings = load_cache_settings() if cache_settings is None else cache_settings
-    parser = argparse.ArgumentParser(prog="bacdive-cli")
+    parser = argparse.ArgumentParser(prog="bacdive")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     fetch_parser = subparsers.add_parser("fetch", help="Fetch detailed BacDive strain records")

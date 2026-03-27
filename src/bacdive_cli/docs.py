@@ -30,7 +30,7 @@ DOC_SOURCES = (
 ENDPOINT_DOCS: dict[str, EndpointDoc] = {
     "fetch": EndpointDoc(
         command="fetch",
-        cli_usage="bacdive-cli fetch <bacdive_id> [<bacdive_id> ...] [--predictions] [--page N]",
+        cli_usage="bacdive fetch <bacdive_id> [<bacdive_id> ...] [--predictions] [--page N]",
         http_method="GET",
         http_path="/v2/fetch/{bacdive_id_or_semicolon_separated_ids}",
         purpose="Retrieve full BacDive strain detail records for one or more BacDive IDs.",
@@ -61,19 +61,19 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
             ),
         ),
         example_queries=(
-            "bacdive-cli fetch 962",
-            "bacdive-cli fetch 12757",
-            "bacdive-cli fetch 24493 24494 --predictions",
+            "bacdive fetch 962",
+            "bacdive fetch 12757",
+            "bacdive fetch 24493 24494 --predictions",
         ),
         observed_examples=(
             (
-                "bacdive-cli fetch 962 returned count=1 and results['962'] with "
+                "bacdive fetch 962 returned count=1 and results['962'] with "
                 "Bacillus subtilis DSM 1088, DSM number 1088, NCBI tax id 1423, "
                 "growth temperature 30 C, biosafety level 1, 16S accessions "
                 "AB680377 and HQ231914, and genome accession GCA_040371185."
             ),
             (
-                "bacdive-cli fetch 12757 returned count=1 and results['12757'] "
+                "bacdive fetch 12757 returned count=1 and results['12757'] "
                 "with Pseudomonas aeruginosa DSM 288, NCBI tax id 287, growth "
                 "temperature 37 C, biosafety level 2, pathogenicity human=yes, "
                 "and phenotype blocks including API 20NE and metabolite "
@@ -84,7 +84,7 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
     "culture-collection": EndpointDoc(
         command="culture-collection",
         cli_usage=(
-            "bacdive-cli culture-collection <culture_collection_number> "
+            "bacdive culture-collection <culture_collection_number> "
             "[<culture_collection_number> ...] [--search-type MODE] [--page N]"
         ),
         http_method="GET",
@@ -110,21 +110,16 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
             "This is an identifier-resolution endpoint, not a detail endpoint.",
         ),
         example_queries=(
-            "bacdive-cli culture-collection 'DSM 288'",
-            "bacdive-cli culture-collection DSM --search-type startswith",
+            "bacdive culture-collection 'DSM 288'",
+            "bacdive culture-collection DSM --search-type startswith",
         ),
         observed_examples=(
-            (
-                "bacdive-cli culture-collection 'DSM 288' returned count=1 and "
-                "results=[12757]."
-            ),
+            ("bacdive culture-collection 'DSM 288' returned count=1 and results=[12757]."),
         ),
     ),
     "taxon": EndpointDoc(
         command="taxon",
-        cli_usage=(
-            "bacdive-cli taxon <genus> [<species_epithet>] [<subspecies_epithet>] [--page N]"
-        ),
+        cli_usage=("bacdive taxon <genus> [<species_epithet>] [<subspecies_epithet>] [--page N]"),
         http_method="GET",
         http_path="/v2/taxon/{genus}/{species_epithet?}/{subspecies_epithet?}",
         purpose="Resolve taxonomic names to BacDive IDs.",
@@ -150,18 +145,18 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
             "Follow up with fetch to inspect specific strains.",
         ),
         example_queries=(
-            "bacdive-cli taxon Bacillus",
-            "bacdive-cli taxon Bacillus subtilis",
-            "bacdive-cli taxon Pseudomonas aeruginosa",
+            "bacdive taxon Bacillus",
+            "bacdive taxon Bacillus subtilis",
+            "bacdive taxon Pseudomonas aeruginosa",
         ),
         observed_examples=(
             (
-                "bacdive-cli taxon Bacillus subtilis returned count=286, "
+                "bacdive taxon Bacillus subtilis returned count=286, "
                 "next=https://api.bacdive.dsmz.de/v2/taxon/Bacillus/subtilis?"
                 "page=1, and first-page IDs beginning with 962, 963, 964, 965."
             ),
             (
-                "bacdive-cli taxon Pseudomonas aeruginosa returned count=560, "
+                "bacdive taxon Pseudomonas aeruginosa returned count=560, "
                 "next=https://api.bacdive.dsmz.de/v2/taxon/Pseudomonas/"
                 "aeruginosa?page=1, and first-page IDs beginning with 12757, "
                 "12758, 12759, 12760."
@@ -171,8 +166,7 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
     "sequence-16s": EndpointDoc(
         command="sequence-16s",
         cli_usage=(
-            "bacdive-cli sequence-16s <accession> [<accession> ...] "
-            "[--search-type MODE] [--page N]"
+            "bacdive sequence-16s <accession> [<accession> ...] [--search-type MODE] [--page N]"
         ),
         http_method="GET",
         http_path="/v2/sequence_16s/{seq_acc_num_or_semicolon_separated_values}",
@@ -196,21 +190,15 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
             "Useful when you already have a 16S accession and want the linked BacDive strain IDs.",
         ),
         example_queries=(
-            "bacdive-cli sequence-16s HQ231914",
-            "bacdive-cli sequence-16s AF000162",
+            "bacdive sequence-16s HQ231914",
+            "bacdive sequence-16s AF000162",
         ),
-        observed_examples=(
-            (
-                "bacdive-cli sequence-16s HQ231914 returned count=1 and "
-                "results=[962]."
-            ),
-        ),
+        observed_examples=(("bacdive sequence-16s HQ231914 returned count=1 and results=[962]."),),
     ),
     "sequence-genome": EndpointDoc(
         command="sequence-genome",
         cli_usage=(
-            "bacdive-cli sequence-genome <accession> [<accession> ...] "
-            "[--search-type MODE] [--page N]"
+            "bacdive sequence-genome <accession> [<accession> ...] [--search-type MODE] [--page N]"
         ),
         http_method="GET",
         http_path="/v2/sequence_genome/{seq_acc_num_or_semicolon_separated_values}",
@@ -230,18 +218,13 @@ ENDPOINT_DOCS: dict[str, EndpointDoc] = {
             "For this endpoint, results is a list of BacDive integer IDs."
         ),
         result_shape="A flat list of BacDive IDs matching the accession query.",
-        notes=(
-            "Useful when you want to pivot from genome assemblies to BacDive strain records.",
-        ),
+        notes=("Useful when you want to pivot from genome assemblies to BacDive strain records.",),
         example_queries=(
-            "bacdive-cli sequence-genome GCA_040371185",
-            "bacdive-cli sequence-genome GCA_006094295",
+            "bacdive sequence-genome GCA_040371185",
+            "bacdive sequence-genome GCA_006094295",
         ),
         observed_examples=(
-            (
-                "bacdive-cli sequence-genome GCA_040371185 returned count=1 and "
-                "results=[962]."
-            ),
+            ("bacdive sequence-genome GCA_040371185 returned count=1 and results=[962]."),
         ),
     ),
 }

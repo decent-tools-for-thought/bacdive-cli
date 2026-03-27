@@ -25,31 +25,31 @@ $$\color{#0EA5E9}Install \space \color{#14B8A6}Tool$$
 
 ```bash
 uv tool install .      # install the CLI
-bacdive-cli --help     # inspect the command surface
+bacdive --help     # inspect the command surface
 ```
 
 ## Functionality
 $$\color{#0EA5E9}Strain \space \color{#14B8A6}Lookup$$
-- `bacdive-cli fetch <bacdive-id>...`: fetch one or more detailed BacDive strain records.
-- `bacdive-cli fetch --predictions`: include prediction-oriented fields when available.
-- `bacdive-cli fetch`: supports page selection, raw-vs-JSON output, cache bypass, refresh, cache directory overrides, and base URL overrides.
+- `bacdive fetch <bacdive-id>...`: fetch one or more detailed BacDive strain records.
+- `bacdive fetch --predictions`: include prediction-oriented fields when available.
+- `bacdive fetch`: supports page selection, raw-vs-JSON output, cache bypass, refresh, cache directory overrides, and base URL overrides.
 
 $$\color{#0EA5E9}Search \space \color{#14B8A6}Browse$$
-- `bacdive-cli culture-collection <value>...`: resolve BacDive IDs from culture collection numbers.
-- `bacdive-cli culture-collection --search-type exact|contains|startswith|endswith`: control BacDive string matching on supported search endpoints.
-- `bacdive-cli taxon <genus> [species] [subspecies]`: search BacDive IDs by taxonomy terms.
-- `bacdive-cli sequence-16s <accession>...`: search BacDive IDs by 16S accession.
-- `bacdive-cli sequence-genome <accession>...`: search BacDive IDs by genome accession.
+- `bacdive culture-collection <value>...`: resolve BacDive IDs from culture collection numbers.
+- `bacdive culture-collection --search-type exact|contains|startswith|endswith`: control BacDive string matching on supported search endpoints.
+- `bacdive taxon <genus> [species] [subspecies]`: search BacDive IDs by taxonomy terms.
+- `bacdive sequence-16s <accession>...`: search BacDive IDs by 16S accession.
+- `bacdive sequence-genome <accession>...`: search BacDive IDs by genome accession.
 
 $$\color{#0EA5E9}Docs \space \color{#14B8A6}Inspect$$
-- `bacdive-cli docs`: print structured endpoint documentation intended to be easy for both humans and LLMs to ingest.
-- `bacdive-cli docs <endpoint>`: focus the docs output on one endpoint family.
-- `bacdive-cli docs --format markdown|json`: emit either Markdown or machine-readable JSON.
+- `bacdive docs`: print structured endpoint documentation intended to be easy for both humans and LLMs to ingest.
+- `bacdive docs <endpoint>`: focus the docs output on one endpoint family.
+- `bacdive docs --format markdown|json`: emit either Markdown or machine-readable JSON.
 
 $$\color{#0EA5E9}Cache \space \color{#14B8A6}Control$$
-- `bacdive-cli cache stats`: show cache size and entry counts.
-- `bacdive-cli cache prune --max-size-gb <n>`: evict older cache entries until the cache fits the target cap.
-- `bacdive-cli cache clear`: remove all cached responses.
+- `bacdive cache stats`: show cache size and entry counts.
+- `bacdive cache prune --max-size-gb <n>`: evict older cache entries until the cache fits the target cap.
+- `bacdive cache clear`: remove all cached responses.
 
 ## Configuration
 $$\color{#0EA5E9}Tune \space \color{#14B8A6}Defaults$$
@@ -80,12 +80,12 @@ max_size_gb = 0.0
 $$\color{#0EA5E9}Try \space \color{#14B8A6}Browse$$
 
 ```bash
-bacdive-cli fetch 24493                                   # fetch one strain record
-bacdive-cli fetch 24493 24494 --predictions               # fetch multiple records with predictions
-bacdive-cli culture-collection "DSM 26640"                # resolve a culture collection number
-bacdive-cli taxon Bacillus subtilis                       # search by taxonomy
-bacdive-cli sequence-16s AF000162                         # search by 16S accession
-bacdive-cli docs fetch --format json                      # inspect one endpoint family as JSON
+bacdive fetch 24493                                   # fetch one strain record
+bacdive fetch 24493 24494 --predictions               # fetch multiple records with predictions
+bacdive culture-collection "DSM 26640"                # resolve a culture collection number
+bacdive taxon Bacillus subtilis                       # search by taxonomy
+bacdive sequence-16s AF000162                         # search by 16S accession
+bacdive docs fetch --format json                      # inspect one endpoint family as JSON
 ```
 
 ## Credits
