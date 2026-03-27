@@ -17,7 +17,6 @@ Command-line client for BacDive strain lookup, taxonomy search, accession-based 
 - [Install](#install)
 - [Functionality](#functionality)
 - [Configuration](#configuration)
-- [Config File](#config-file)
 - [Quick Start](#quick-start)
 - [Credits](#credits)
 
@@ -65,7 +64,7 @@ By default the CLI targets `https://api.bacdive.dsmz.de`, uses the current `v2` 
 
 The main environment variables are `BACDIVE_API_BASE_URL`, `BACDIVE_CACHE_DIR`, `BACDIVE_CACHE_MAX_BYTES`, and `XDG_CACHE_HOME`.
 
-## Config File
+### Config File
 $$\color{#0EA5E9}Set \space \color{#14B8A6}Defaults$$
 
 The CLI reads optional defaults from `$XDG_CONFIG_HOME/bacdive-cli/config.toml`, falling back to `~/.config/bacdive-cli/config.toml`.
