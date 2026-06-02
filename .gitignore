@@ -7,3 +7,4 @@ dist/
 build/
 src/*.egg-info/
 src/**/*.egg-info/
+.codex
